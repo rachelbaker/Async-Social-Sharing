@@ -75,27 +75,26 @@ add_filter('the_content', 'async_share_display');
 function async_share_display($content)
 {
 $options = get_option('async_share_options');
-  if ($options['twitter'] == TRUE)
+  if ($options['twitter'] == TRUE) {
     $twitter = '<li class="twitter-share"><a href="https://twitter.com/share" class="twitter-share-button" data-url="'. get_permalink() .'">Tweet</a></li>';
-
+} else { $twitter = ''; }
   if ($options['facebook'] == TRUE) {
     $facebookinit = '<div id="fb-root"></div>';
     $facebook = '<li class="fb-share"><div class="fb-like" data-href="'. get_permalink() .'" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="verdana"></div></li>';
 } else {$facebookinit = ''; $facebook = '';}
-  if ($options['gplus'] == TRUE)
+  if ($options['gplus'] == TRUE) {
     $gplus = '<li class="gplus-share"><div class="g-plus" data-action="share" data-annotation="bubble" data-height="21" data-href="'. get_permalink() .'"></div></li>';
-
-  if ($options['linkedin'] == TRUE)
-    $linkedin = '<li class="linkedin-share"><script type="IN/Share" data-url="'. get_permalink() .'"></script>
-</li>';
-
-  if ($options['hackernews'] == TRUE)
-    $hackernews = '<li class="hn-share"><a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="'. the_title() .'" data-url="'. get_permalink() .'">Vote on HN</a></li>';
-
+  } else {  $glus = ''; }
+  if ($options['linkedin'] == TRUE) {
+    $linkedin = '<li class="linkedin-share"><script type="IN/Share" data-url="'. get_permalink() .'"></script></li>';
+} else { $linkedin = ''; }
+  if ($options['hackernews'] == TRUE) {
+    $hackernews = '<li class="hn-share"><a href="http://news.ycombinator.com/submit" class="hn-share-button" data-url="'. get_permalink() .'">Vote on HN</a></li>';
+} else { $hackernews = ''; }
     /**
      * Displaying the sharing widgets
      */
-      $async_display_share_box = '<div class="async-wrapper">'. $facebookinit .'<ul class="async-list">'. $twitter . $facebook . $gplus . $linkedin . $hackernews .'</div>';
+      $async_display_share_box = '<div class="async-wrapper">'. $facebookinit .'<ul class="async-list">'. $twitter . $facebook . $gplus . $linkedin . $hackernews .'</ul></div>';
     if (is_paged() || is_single())
     {
         return $content . $async_display_share_box;

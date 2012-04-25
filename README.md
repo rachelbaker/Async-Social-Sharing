@@ -1,9 +1,9 @@
 #Async Social Sharing WordPress Plugin
 
 
-Simple social sharing plugin that loads the third-party scripts asynchronously to improve site performance. Plugin provides options to load the following sharing widgets: 
+Simple social sharing plugin that loads the third-party scripts asynchronously to improve site performance. Plugin provides options to load the following sharing widgets:
 
-*	Twitter 
+*	Twitter
 *	Facebook
 *	Google+
 *	Linkedin
@@ -13,7 +13,7 @@ Simple social sharing plugin that loads the third-party scripts asynchronously t
 
 __Version 1.0__
 
-Initial release 
+Initial release
 
 __Upcoming Versions Wishlist__
 
@@ -43,7 +43,8 @@ Scripts now load in asynchronous fashion:
 
 ##Credits
  * Inspired by Stoyan Stefanov's blog post ["Social Button BFFs"](http://www.phpied.com/social-button-bffs/)
- 
+ * HackerNews button code by [Ilya Grigorik](https://github.com/igrigorik/hackernews-button)
+
 ##License
 Copyright 2012 Rachel Baker (rachel@rachelbaker.me)
 

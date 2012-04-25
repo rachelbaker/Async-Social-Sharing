@@ -1,0 +1,24 @@
+.async-wrapper {
+min-height: 40px;
+padding-top: 30px;
+margin-bottom: 20px;
+width: 100%;
+display: block;
+position: relative;
+}
+
+.async-wrapper ul.async-list {
+	float: left;
+	display: inline;
+	position: relative;
+	clear: both;
+	width: 100%;
+}
+
+ul.async-list li.fb-share, ul.async-list li.gplus-share, ul.async-list li.linkedin-share, ul.async-list li.twitter-share, ul.async-list li.hn-share  {
+  height: 24px;
+  width: 20%;
+  float: left;
+  display: inline;
+  list-style: none;
+}

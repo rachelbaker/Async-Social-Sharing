@@ -2,8 +2,8 @@
 /*
 Plugin Name: Async Social Sharing
 Plugin URI: http://www.rachelbaker.me
-Description: Simple asynchronous post sharing widget.  Loads the following sharing widgets: Twitter, Facebook, Linkedin, Google+ and Hacker News via asynchronous javascript for simple and fast loading social sharing.
-Version: .10
+Description: Simple social sharing plugin that loads the third-party scripts asynchronously to improve site performance. Plugin provides options to load the following sharing widgets: Twitter, Facebook, Google+, Linkedin and Hacker News.
+Version: 1.0
 Author: Rachel Baker
 Author URI: http://www.rachelbaker.me
 Author Email: rachel@rachelbaker.me
@@ -25,37 +25,80 @@ License:
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 */
-  ################################################################################
-// Enqueue Scripts
-################################################################################
-  function asyncshare_js_loader() {
-       wp_enqueue_script('async', plugins_url( 'async-share.js', __FILE__ ), array('jquery'),'', true );
+
+/**
+ * Defining plugin location
+ */
+
+define( 'PLUGIN_DIR', plugin_dir_path(__FILE__).'/' );
+
+/**
+ * Loading supporting files
+ */
+include "admin/admin.php"; // Plugin admin options setup
+
+/*
+| -------------------------------------------------------------------
+| Enqueue Scripts
+| -------------------------------------------------------------------
+|
+| */
+
+  function async_share_js_loader() {
+       wp_enqueue_script('async_js', plugins_url( 'assets/js/async-share.js', __FILE__ ), array('jquery'),'', true );
 
       }
-   add_action('wp_enqueue_scripts', 'asyncshare_js_loader');
-
- ################################################################################
-// Enqueue CSS Styles
-################################################################################
-  function asyncshare_css_loader() {
-    wp_enqueue_style('async', plugins_url( 'async-share.css', __FILE__ ), false ,'1.0', 'all' );
+   add_action('wp_enqueue_scripts', 'async_share_js_loader');
+/*
+| -------------------------------------------------------------------
+| Enqueue Styles
+| -------------------------------------------------------------------
+|
+| */
+  function async_share_css_loader() {
+    wp_enqueue_style('async_css', plugins_url( 'assets/css/async-share.css', __FILE__ ), false ,'1.0', 'all' );
       }
-  add_action('wp_enqueue_scripts', 'asyncshare_css_loader');
+  add_action('wp_enqueue_scripts', 'async_share_css_loader');
 
 
-add_filter('the_content', 'asyncshare_display', 30, 2);
-add_filter('the_excerpt', 'asyncshare_display', 99 );
-function asyncshare_display($content)
+
+// Display a Settings link on the main Plugins page
+function async_share_plugin_action_links( $links ) {
+    $async_share_links = '<a href="'.get_admin_url().'options-general.php?page=async-social-sharing/admin/admin.php">'.__('Settings').'</a>';
+    // make the 'Settings' link appear first
+    array_unshift( $links, $async_share_links );
+    return $links;
+}
+
+
+add_filter('the_content', 'async_share_display');
+function async_share_display($content)
 {
-    // this is where we will display the bio
+$options = get_option('async_share_options');
+  if ($options['twitter'] == TRUE)
+    $twitter = '<li class="twitter-share"><a href="https://twitter.com/share" class="twitter-share-button" data-url="'. get_permalink() .'">Tweet</a></li>';
 
-      $async_share_box = '<div id="fb-root"></div><div class="async-wrapper"><ul class="async-list"><li class="twitter-share"><a href="https://twitter.com/share" class="twitter-share-button" data-url="'. get_permalink() .'">Tweet</a></li><li class="linkedin-share"><script type="IN/Share" data-url="'. get_permalink() .'"></script>
-</li><li class="fb-share"><div class="fb-like" data-href="'. get_permalink() .'" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="verdana"></div></li><li class="gplus-share"><g:plusone href="'. get_permalink() .'" size="medium" annotation="inline" width="120"></li><li class="hn-share"><a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="'. the_title() .'" data-url="'. get_permalink() .'">Vote on HN</a></li></div>';
+  if ($options['facebook'] == TRUE) {
+    $facebookinit = '<div id="fb-root"></div>';
+    $facebook = '<li class="fb-share"><div class="fb-like" data-href="'. get_permalink() .'" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="verdana"></div></li>';
+} else {$facebookinit = ''; $facebook = '';}
+  if ($options['gplus'] == TRUE)
+    $gplus = '<li class="gplus-share"><div class="g-plus" data-action="share" data-annotation="bubble" data-height="21" data-href="'. get_permalink() .'"></div></li>';
 
+  if ($options['linkedin'] == TRUE)
+    $linkedin = '<li class="linkedin-share"><script type="IN/Share" data-url="'. get_permalink() .'"></script>
+</li>';
 
+  if ($options['hackernews'] == TRUE)
+    $hackernews = '<li class="hn-share"><a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="'. the_title() .'" data-url="'. get_permalink() .'">Vote on HN</a></li>';
+
+    /**
+     * Displaying the sharing widgets
+     */
+      $async_display_share_box = '<div class="async-wrapper">'. $facebookinit .'<ul class="async-list">'. $twitter . $facebook . $gplus . $linkedin . $hackernews .'</div>';
     if (is_paged() || is_single())
     {
-        return $content . $async_share_box;
+        return $content . $async_display_share_box;
         } else {
         return $content;
     }

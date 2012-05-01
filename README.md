@@ -11,6 +11,10 @@ Simple social sharing plugin that loads the third-party scripts asynchronously t
 
 ##Release Notes
 
+__Version 1.0.1__
+Added lazy loading to async-share.js
+Fixed issue with plugin settings link
+
 __Version 1.0__
 
 Initial release
@@ -18,6 +22,7 @@ Initial release
 __Upcoming Versions Wishlist__
 
 *	Allow re-arranging of social widgets
+* Allow social widgets to be displayed under post excerpts
 
 
 ##Screenshots
@@ -28,8 +33,8 @@ Social Sharing widgets are loaded under posts
 Plugin Options page allows you to select which social sharing widgets to load:
 ![image](https://img.skitch.com/20120425-etyncfitu8adcwdi46rfyx2qh2.png)
 
-Scripts now load in asynchronous fashion:
-![image](https://img.skitch.com/20120425-twrkwpxg952rwuufi1qy1bwmu5.png)
+Scripts now load in asynchronous fashion after the page load completes:
+![image](https://img.skitch.com/20120501-ka4dr14y773262a6nfywxwwty6.png)
 
 ##Dependencies
 

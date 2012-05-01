@@ -3,7 +3,7 @@
 Plugin Name: Async Social Sharing
 Plugin URI: http://www.rachelbaker.me
 Description: Simple social sharing plugin that loads the third-party scripts asynchronously to improve site performance. Plugin provides options to load the following sharing widgets: Twitter, Facebook, Google+, Linkedin and Hacker News.
-Version: 1.0
+Version: 1.0.1
 Author: Rachel Baker
 Author URI: http://www.rachelbaker.me
 Author Email: rachel@rachelbaker.me
@@ -60,17 +60,31 @@ include "admin/admin.php"; // Plugin admin options setup
       }
   add_action('wp_enqueue_scripts', 'async_share_css_loader');
 
-
-
-// Display a Settings link on the main Plugins page
-function async_share_plugin_action_links( $links ) {
-    $async_share_links = '<a href="'.get_admin_url().'options-general.php?page=async-social-sharing/admin/admin.php">'.__('Settings').'</a>';
+/*
+| -------------------------------------------------------------------
+| Plugin Link to Settings Page
+| -------------------------------------------------------------------
+|
+| */
+function async_share_plugin_action_links( $links, $file ) {
+static $this_plugin;
+if (!$this_plugin) $this_plugin = plugin_basename(__FILE__);
+if ($file == $this_plugin){
+    $async_share_settings_link = '<a href="'.get_admin_url().'options-general.php?page=async-social-sharing/admin/admin.php">'.__('Settings').'</a>';
     // make the 'Settings' link appear first
-    array_unshift( $links, $async_share_links );
-    return $links;
+    array_unshift( $links, $async_share_settings_link );
+  }
+
+  return $links;
 }
 
-
+/*
+| -------------------------------------------------------------------
+| Async Share Content
+| * added to bottom of posts
+| -------------------------------------------------------------------
+|
+| */
 add_filter('the_content', 'async_share_display');
 function async_share_display($content)
 {

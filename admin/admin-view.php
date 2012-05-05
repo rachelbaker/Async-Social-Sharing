@@ -40,6 +40,11 @@
 
 						<label><input name="async_share_options[hackernews]" type="checkbox" value="true" <?php if (isset($options['hackernews'])) { checked('true', $options['hackernews']); } ?> /> HackerNews </label>
 </div><!--/.control-group -->
+<h3>Display Options</h3>
+<div class="control-group">
+<p class="help-block">Display the sharing widgets under the posts on blog and archive pages (not just on the single post)</p>
+<label><input name="async_share_options[paged]" type="checkbox" value="true" <?php if (isset($options['paged'])) { checked('true', $options['paged']); } ?> /> Yes </label>
+</div><!--/.control-group -->
 			<p class="submit">
 				<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
 			</p>

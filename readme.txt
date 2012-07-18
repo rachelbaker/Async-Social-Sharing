@@ -2,8 +2,8 @@
 Contributors: rachelbaker
 Tags: social, sharing, twitter, facebook, hackernews, linkedin, google+, widgets, social networks
 Requires at least: 3.0
-Tested up to: 3.4 beta
-Stable tag: 1.1.0
+Tested up to: 3.4.1
+Stable tag: 1.2.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -36,7 +36,7 @@ Dependencies
 Upcoming Versions Wishlist
 
 *	Allow re-arranging of social widgets
-* Allow social widgets to be displayed under post excerpts
+*   Conditionally load js
 
 
 Credits
@@ -65,6 +65,12 @@ Author
 
 
 == Changelog ==
+
+== 1.2.0 ==
+Combined function for plugin's script and style loading.
+Fixed bug that was generating a PHP error when no options were set.
+Tested with WordPress 3.4.1
+
 
 == 1.1.0 ==
 Added Display Options to plugin to allow sharing widgets to be displayed on blog and archive pages.

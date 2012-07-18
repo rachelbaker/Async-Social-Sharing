@@ -14,6 +14,11 @@ Select option (if desired) to display the sharing widgets on blog and archive pa
 
 ##Release Notes
 
+__Version 1.2.0__
+Combined function for plugin's script and style loading.
+Fixed bug that was generating a PHP error when no options were set.
+Tested with WordPress 3.4.1
+
 __Version 1.1.0__
 Added Display Options to plugin to allow sharing widgets to be displayed on blog and archive pages.
 Fixed bug with Facebook `fb-root` div not being detected before script loaded.
@@ -29,8 +34,8 @@ Initial release
 
 __Upcoming Versions Wishlist__
 
-*	Allow re-arranging of social widgets
-* Allow social widgets to be displayed under post excerpts
+*   Allow re-arranging of social widgets
+*   Conditionally load js
 
 
 ##Screenshots

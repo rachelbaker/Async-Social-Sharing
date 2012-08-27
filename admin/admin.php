@@ -1,7 +1,5 @@
 <?php
-
 // Set-up Action and Filter Hooks
-register_activation_hook(__FILE__, 'async_share_add_defaults');
 register_uninstall_hook(__FILE__, 'async_share_delete_plugin_options');
 add_action('admin_init', 'async_share_init' );
 add_action('admin_menu', 'async_share_add_options_page');
@@ -30,7 +28,14 @@ function async_share_add_options_page() {
   wp_enqueue_style('async_admin', plugins_url( 'assets/css/async-admin.css' , dirname(__FILE__) ), false ,'1.0', 'all' );
   }
 
-
+function async_share_post_types_options() {
+$args=array(
+  '_builtin' => false
+    );
+    $cpt_types=get_post_types($args,'names');
+    array_push($cpt_types, 'page');
+    return $cpt_types;
+}
 
 // Render the Plugin options form
 function async_share_render_form() {

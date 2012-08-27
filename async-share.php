@@ -3,7 +3,7 @@
 Plugin Name: Async Social Sharing
 Plugin URI: http://www.rachelbaker.me
 Description: Simple social sharing plugin that loads the third-party scripts asynchronously to improve site performance. Plugin provides options to load the following sharing widgets: Twitter, Facebook, Google+, Linkedin and Hacker News.
-Version: 1.2.0
+Version: 1.5.0
 Author: Rachel Baker
 Author URI: http://www.rachelbaker.me
 Author Email: rachel@rachelbaker.me
@@ -26,39 +26,33 @@ License:
 
 */
 
-/**
- * Defining plugin location
- */
-
-define( 'PLUGIN_DIR', plugin_dir_path( __FILE__ ).'/' );
-
-/**
- * Loading supporting files
- */
 include "admin/admin.php"; // Plugin admin options setup
+global $async_share_options;
 
-/**
- * Plugin Actions
- */
 add_action( 'wp_enqueue_scripts', 'async_share_script_loader' );
 add_filter( 'the_content', 'async_share_display' );
 
-/*
-| -------------------------------------------------------------------
-| Enqueue Styles & Scripts
-| -------------------------------------------------------------------
-|
-| */
+/**
+ * Get plugin options from database and store in array
+ * @return array();
+ */
+function async_share_get_options() {
+  global $async_share_options;
+  $async_share_options = get_option( 'async_share_options' );
+  return $async_share_options;
+}
+
+/**
+ * JavaScripts and CSS for front-end display of social widgets
+ */
 function async_share_script_loader() {
   wp_enqueue_script( 'async_js', plugins_url( 'assets/js/async-share.js', __FILE__ ), array( 'jquery' ), '', true );
   wp_enqueue_style( 'async_css', plugins_url( 'assets/css/async-share.css', __FILE__ ), false , '1.0', 'all' );
 }
-/*
-| -------------------------------------------------------------------
-| Plugin Link to Settings Page
-| -------------------------------------------------------------------
-|
-| */
+
+/**
+ * Sets up link to plugin's options page
+ */
 function async_share_plugin_action_links( $links, $file ) {
   static $this_plugin;
   if ( !$this_plugin ) $this_plugin = plugin_basename( __FILE__ );
@@ -70,48 +64,150 @@ function async_share_plugin_action_links( $links, $file ) {
   return $links;
 }
 
-/*
-| -------------------------------------------------------------------
-| Async Share Content
-| * added to bottom of posts
-| -------------------------------------------------------------------
-|
-| */
-function async_share_display( $content ) {
-  global $post;
-  $options = get_option( 'async_share_options' );
-  if ( isset( $options ) ) {
-    if ( $options['twitter'] == TRUE ) {
+/**
+ * Verifies an option was selected or at least set
+ * @param  string $param option name
+ * @return bool
+ */
+function async_share_option_check( $param ) {
+  $async_share_options = async_share_get_options();
+  if ( !isset($async_share_options[$param]) ) {
+    return FALSE;
+  }
+  if ( $async_share_options[ $param ] == TRUE ) {
+    return TRUE;
+      }
+      else
+        return FALSE;
+  }
+
+/**
+ * Twitter widget display
+ */
+function async_share_display_twitter() {
+  $async_share_options = async_share_get_options();
+  if ( async_share_option_check('twitter') == TRUE ) {
       $twitter = '<li class="twitter-share"><a href="https://twitter.com/share" class="twitter-share-button" data-url="'. get_permalink() .'">Tweet</a></li>';
-    } else { $twitter = ''; }
-    if ( $options['facebook'] == TRUE ) {
+      return $twitter;
+    }
+  else
+      return;
+}
+
+/**
+ * Facebook widget display
+ */
+function async_share_display_facebook() {
+  $async_share_options = async_share_get_options();
+  if ( async_share_option_check('facebook') == TRUE ) {
       $facebook = '<li class="fb-share"><div class="fb-like" data-href="'. get_permalink() .'" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="verdana"></div></li>';
-    } else {$facebookinit = ''; $facebook = '';}
-    if ( $options['gplus'] == TRUE ) {
+      return $facebook;
+    }
+  else
+      return;
+}
+
+function async_share_display_fbinit() {
+  $async_share_options = async_share_get_options();
+  if ( async_share_option_check('facebook') == TRUE ) {
+    $fbinit = '<div id="fb-root"></div>';
+    return $fbinit;
+  }
+  else
+      return;
+}
+
+/**
+ * Google+ widget display
+ */
+function async_share_display_gplus() {
+  $async_share_options = async_share_get_options();
+  if ( async_share_option_check('gplus') == TRUE ) {
       $gplus = '<li class="gplus-share"><div class="g-plus" data-action="share" data-annotation="bubble" data-height="21" data-href="'. get_permalink() .'"></div></li>';
-    } else {  $gplus = ''; }
-    if ( $options['linkedin'] == TRUE ) {
+      return $gplus;
+  }
+   else
+      return;
+}
+
+/**
+ * Linkedin widget display
+ */
+function async_share_display_linkedin() {
+  $async_share_options = async_share_get_options();
+  if ( async_share_option_check('linkedin') == TRUE ) {
       $linkedin = '<li class="linkedin-share"><script type="IN/Share" data-url="'. get_permalink() .'"></script></li>';
-    } else { $linkedin = ''; }
-    if ( $options['hackernews'] == TRUE ) {
+       return $linkedin;
+    }
+   else
+      return;
+}
+
+/**
+ * HackerNews widget display
+ */
+function async_share_display_hackernews() {
+  $async_share_options = async_share_get_options();
+  if ( async_share_option_check('hackernews') == TRUE ) {
       $hackernews = '<li class="hn-share"><a href="http://news.ycombinator.com/submit" class="hn-share-button" data-url="'. get_permalink() .'">Vote on HN</a></li>';
-    } else { $hackernews = ''; }
+      return $hackernews;
+    }
+    else
+      return;
+}
+
+/**
+ * Sets up display of social widgets
+ * @return string;
+ */
+function async_share_social_box() {
+  global $post;
+  $async_share_options = async_share_get_options();
+  if ( isset($post) and isset($async_share_options) ) {
+    $twitter = async_share_display_twitter();
+    $facebook = async_share_display_facebook();
+    $fbinit = async_share_display_fbinit();
+    $gplus = async_share_display_gplus();
+    $linkedin = async_share_display_linkedin();
+    $hackernews = async_share_display_hackernews();
     /**
      * Displaying the sharing widgets
      */
-    $async_display_share_box = '<div id="fb-root"></div><div class="async-wrapper"><ul class="async-list">'. $twitter . $facebook . $gplus . $linkedin . $hackernews .'</ul></div>';
-    if ( $options['paged'] == TRUE ) {
-      if ( is_home() || is_paged() || is_single() ) {
-        return $content . $async_display_share_box;
-      } else {
-        return $content;
+    $async_display_share_box = $fbinit.'<div class="async-wrapper"><ul class="async-list">'. $twitter . $facebook . $gplus . $linkedin . $hackernews .'</ul></div>';
+    }
+    else {
+      $async_display_share_box = '';
+    }
+    return $async_display_share_box;
+  }
+
+  /**
+   * Controls which template files the social widgets are displayed upon
+   */
+  function async_share_display( $content ) {
+      $async_display_share_box = async_share_social_box();
+      $async_share_options = async_share_get_options();
+
+      if ( is_home() || is_paged() ) {
+        if ( $async_share_options['paged'] == TRUE ) {
+          return $content . $async_display_share_box;
+        }
+        else
+          return $content;
+        }
+        elseif ( is_single() ) {
+          $cpt = get_post_type();
+          if ( 'post' == $cpt ) {
+            return $content . $async_display_share_box;
+          }
+          elseif ( in_array($cpt, $async_share_options['types'])) {
+            return $content . $async_display_share_box;
+          }
+        }
+        elseif ( is_page() ) {
+          if (in_array( "page", $async_share_options['types'] ) ) {
+            return $content . $async_display_share_box;
+        }
+        else return $content;
       }
-    }
-    elseif ( $options['paged'] == FALSE )
-      if ( is_single() ) {
-        return $content . $async_display_share_box;
-      } else {
-      return $content;
-    }
-  } else return $content;
-}
+  }

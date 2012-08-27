@@ -8,17 +8,21 @@ position: relative;
 }
 
 .async-wrapper ul.async-list {
-	float: left;
 	display: inline;
+    clear: both;
+    float: left;
 	position: relative;
-	clear: both;
-	width: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 ul.async-list li.fb-share, ul.async-list li.gplus-share, ul.async-list li.linkedin-share, ul.async-list li.twitter-share, ul.async-list li.hn-share  {
+  display: inline-block;
   height: 24px;
-  width: 20%;
   float: left;
-  display: inline;
   list-style: none;
+  margin:0 auto;
+  padding: 0;
+  width: 20%;
 }

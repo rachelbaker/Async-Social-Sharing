@@ -10,9 +10,15 @@ The plugin provides settings to load any of the following sharing widgets:
 * Linkedin
 * Hacker News
 
-Select option (if desired) to display the sharing widgets on blog and archive pages.
+Available display options include ability to display the sharing widgets on pages, specific custom post types or blog and archive pages.
 
 ##Release Notes
+
+__Version 1.5.0__
+Added ability to display social widgets on pages.
+Added ability to select which custom post types will display the social widgets.
+Reworked `async-share.js` file.  Now only the external social scripts that are selected to be displayed will be loaded.
+Improved display styles for social widgets.
 
 __Version 1.2.0__
 Combined function for plugin's script and style loading.

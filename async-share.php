@@ -3,7 +3,7 @@
 Plugin Name: Async Social Sharing
 Plugin URI: http://www.rachelbaker.me
 Description: Simple social sharing plugin that loads the third-party scripts asynchronously to improve site performance. Plugin provides options to load the following sharing widgets: Twitter, Facebook, Google+, Linkedin and Hacker News.
-Version: 1.5.0
+Version: 1.5.1
 Author: Rachel Baker
 Author URI: http://www.rachelbaker.me
 Author Email: rachel@rachelbaker.me
@@ -187,27 +187,36 @@ function async_share_social_box() {
   function async_share_display( $content ) {
       $async_display_share_box = async_share_social_box();
       $async_share_options = async_share_get_options();
-
-      if ( is_home() || is_paged() ) {
-        if ( $async_share_options['paged'] == TRUE ) {
-          return $content . $async_display_share_box;
-        }
-        else
+        if ( is_feed() ) {
           return $content;
+        }
+        elseif ( is_home() || is_paged() ) {
+          if ( $async_share_options['paged'] == TRUE ) {
+            return $content . $async_display_share_box;
+          }
+          else
+            return $content;
         }
         elseif ( is_single() ) {
           $cpt = get_post_type();
           if ( 'post' == $cpt ) {
             return $content . $async_display_share_box;
           }
-          elseif ( in_array($cpt, $async_share_options['types'])) {
+          elseif ( isset( $async_share_options['types'] ) ) {
+            if ( in_array($cpt, $async_share_options['types']) ) {
             return $content . $async_display_share_box;
           }
         }
+          else
+            return $content;
+        }
         elseif ( is_page() ) {
-          if (in_array( "page", $async_share_options['types'] ) ) {
+          if ( isset( $async_share_options['types'] ) and in_array( "page", $async_share_options['types'] ) ) {
             return $content . $async_display_share_box;
         }
-        else return $content;
+        else
+          return $content;
       }
+      else
+        return $content;
   }

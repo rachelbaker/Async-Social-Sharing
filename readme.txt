@@ -1,13 +1,13 @@
 === Plugin Name ===
 Contributors: rachelbaker
-Tags: social, sharing, twitter, facebook, hackernews, linkedin, google+, widgets, social networks
+Tags: social, sharing, twitter, facebook, hackernews, linkedin, google+, widgets, social networks, performance
 Requires at least: 3.0
-Tested up to: 3.4.1
-Stable tag: 1.2.0
+Tested up to: 3.5-alpha
+Stable tag: 1.5.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Simple social plugin that loads the third-party sharing scripts asynchronously after the page loads for optimal site performance.
+Simple social plugin that loads popular social sharing widgets asynchronously after the page loads for optimal site performance.
 
 == Description ==
 
@@ -22,7 +22,7 @@ The plugin provides settings to load any of the following sharing widgets:
 *	Linkedin
 *	Hacker News
 
-Select option (if desired) to display the sharing widgets on blog and archive pages.
+Available display options include ability to display the sharing widgets on pages, specific custom post types or blog and archive pages.
 
 Why is Asynchronous script loading better?
 Asynchronous loading allows multiple files to load parallel to each other. Instead of having to wait for Twitter to respond with their script, the browser moves on and starts fetching the next request.
@@ -33,10 +33,13 @@ Dependencies
 *	WordPress 3.0+
 *	Content worth sharing
 
+Contributors Welcome
+
+*   Submit a [pull request on Github](https://github.com/rachelbaker/Async-Social-Sharing)
+
 Upcoming Versions Wishlist
 
 *	Allow re-arranging of social widgets
-*   Conditionally load js
 
 
 Credits
@@ -65,6 +68,18 @@ Author
 
 
 == Changelog ==
+
+==1.5.1==
+Fixed bug that would cause content in RSS feeds to not display.
+Fixed bug where PHP Exception was thrown on pages if the display options were not set.
+
+
+==1.5.0==
+Added ability to display social widgets on pages.
+Added ability to select which custom post types will display the social widgets.
+Reworked `async-share.js` file.  Now only the external social scripts that are selected to be displayed will be loaded.
+Improved display styles for social widgets.
+
 
 == 1.2.0 ==
 Combined function for plugin's script and style loading.

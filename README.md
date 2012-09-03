@@ -1,6 +1,6 @@
 #Async Social Sharing WordPress Plugin
 
-Simple social sharing plugin that loads the third-party scripts asynchronously and after the page loads to improve site performance.
+Simple social plugin that loads popular social sharing widgets asynchronously after the page loads for optimal site performance.
 
 The plugin provides settings to load any of the following sharing widgets:
 
@@ -13,6 +13,10 @@ The plugin provides settings to load any of the following sharing widgets:
 Available display options include ability to display the sharing widgets on pages, specific custom post types or blog and archive pages.
 
 ##Release Notes
+
+__Version 1.5.1__
+Fixed bug that would cause content in RSS feeds to not display.
+Fixed bug where PHP Exception was thrown on pages if the display options were not set.
 
 __Version 1.5.0__
 Added ability to display social widgets on pages.

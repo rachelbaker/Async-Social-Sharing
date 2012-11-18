@@ -69,7 +69,6 @@ __Version 1.0__
 __Upcoming Versions Wishlist__
 
 *   Allow re-arranging of social widgets
-*   Conditionally load js
 
 
 ##Screenshots
@@ -78,14 +77,14 @@ Social Sharing widgets are loaded under posts
 ![image](https://img.skitch.com/20120425-x5bnprr39qq39jf8mq9ems9ckf.png)
 
 Plugin Options page allows you to select which social sharing widgets to load:
-![image](https://img.skitch.com/20120502-apim6gwetaurc2c37a7aqdr2u.png)
+![image](http://f.cl.ly/items/2a2D1r270I241Y3i0U2H/screenshot-2.png)
 
 Scripts now load in asynchronous fashion after the page load completes:
 ![image](https://img.skitch.com/20120501-ka4dr14y773262a6nfywxwwty6.png)
 
 ##Dependencies
 
-*	jQuery 1.7
+*	jQuery 1.7+
 *	WordPress
 *	Content worth sharing
 

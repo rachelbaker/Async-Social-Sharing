@@ -51,7 +51,7 @@ function async_share_script_loader()
 {
   wp_enqueue_script( 'async_js', plugins_url( 'assets/js/async-share.js', __FILE__ ), array( 'jquery' ), '', true );
   $options = async_share_get_options();
-  if ($options['disable_css'] !== true ) {
+  if ( !isset($options['disable_css']) || $options['disable_css'] !== true ) {
     wp_enqueue_style( 'async_css', plugins_url( 'assets/css/async-share.css', __FILE__ ), false , '1.0', 'all' );
   }
 }

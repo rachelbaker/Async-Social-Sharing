@@ -44,5 +44,6 @@ function async_share_render_form() {
 
 	function async_share_validate_options($input) {
 	 // strip html from textboxes
+        sanitize_text_field($input);
 	return $input;
 }

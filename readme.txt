@@ -72,7 +72,7 @@ Author
 ==1.6==
 Added option to prevent default CSS stylesheet from loading.
 Fixed bug where PHP Exception was thrown if post types array was empty.
-
+Tested with WordPress 3.5 Beta 3
 
 
 ==1.5.1==

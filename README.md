@@ -14,33 +14,57 @@ Available display options include ability to display the sharing widgets on page
 
 ##Release Notes
 
+__Version 1.6__
+
+* Added option to prevent default CSS stylesheet from loading.
+
+* Fixed bug where PHP Exception was thrown if post types array was empty.
+
+* Tested with WordPress 3.5 Beta 3
+
 __Version 1.5.1__
-Fixed bug that would cause content in RSS feeds to not display.
-Fixed bug where PHP Exception was thrown on pages if the display options were not set.
+
+* Fixed bug that would cause content in RSS feeds to not display.
+
+* Fixed bug where PHP Exception was thrown on pages if the display options were not set.
+
+
 
 __Version 1.5.0__
-Added ability to display social widgets on pages.
-Added ability to select which custom post types will display the social widgets.
-Reworked `async-share.js` file.  Now only the external social scripts that are selected to be displayed will be loaded.
-Improved display styles for social widgets.
+
+* Added ability to display social widgets on pages.
+
+* Added ability to select which custom post types will display the social widgets.
+
+* Reworked `async-share.js` file.  Now only the external social scripts that are selected to be displayed will be loaded.
+
+* Improved display styles for social widgets.
 
 __Version 1.2.0__
-Combined function for plugin's script and style loading.
-Fixed bug that was generating a PHP error when no options were set.
-Tested with WordPress 3.4.1
+
+* Combined function for plugin's script and style loading.
+
+* Fixed bug that was generating a PHP error when no options were set.
+
+* Tested with WordPress 3.4.1
 
 __Version 1.1.0__
-Added Display Options to plugin to allow sharing widgets to be displayed on blog and archive pages.
-Fixed bug with Facebook `fb-root` div not being detected before script loaded.
-Updated license to GPLv3
+
+* Added Display Options to plugin to allow sharing widgets to be displayed on blog and archive pages.
+
+* Fixed bug with Facebook `fb-root` div not being detected before script loaded.
+
+* Updated license to GPLv3
 
 __Version 1.0.1__
-Added lazy loading to async-share.js
-Fixed issue with plugin settings link
+
+* Added lazy loading to async-share.js
+
+* Fixed issue with plugin settings link
 
 __Version 1.0__
 
-Initial release
+* Initial release
 
 __Upcoming Versions Wishlist__
 

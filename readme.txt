@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: rachelbaker
 Tags: social, sharing, twitter, facebook, hackernews, linkedin, google+, widgets, social networks, performance
-Requires at least: 3.0
-Tested up to: 3.5-alpha
-Stable tag: 1.5.1
+Requires at least: 3.3
+Tested up to: 3.5-beta
+Stable tag: 1.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,7 +30,7 @@ Asynchronous loading allows multiple files to load parallel to each other. Inste
 Dependencies
 
 *	jQuery 1.7
-*	WordPress 3.0+
+*	WordPress 3.3+
 *	Content worth sharing
 
 Contributors Welcome
@@ -68,6 +68,12 @@ Author
 
 
 == Changelog ==
+
+==1.6==
+Added option to prevent default CSS stylesheet from loading.
+Fixed bug where PHP Exception was thrown if post types array was empty.
+
+
 
 ==1.5.1==
 Fixed bug that would cause content in RSS feeds to not display.

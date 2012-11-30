@@ -14,6 +14,18 @@ Available display options include ability to display the sharing widgets on page
 
 ##Release Notes
 
+__Version 1.6.1__
+
+* Fixed bug where widgets were not displaying on pages if option was specified.
+
+* Fixed bug where CSS styles for previous installations was still loading, even though the option to disable was selected.
+
+* Expanded post-type multi-selection box area on plugin options page.
+
+* Added instructions for selecting multiple post types from plugin options page.
+
+* Tested with WordPress 3.5 RC2
+
 __Version 1.6__
 
 * Added option to prevent default CSS stylesheet from loading.
@@ -21,6 +33,7 @@ __Version 1.6__
 * Fixed bug where PHP Exception was thrown if post types array was empty.
 
 * Tested with WordPress 3.5 Beta 3
+
 
 __Version 1.5.1__
 

@@ -2,8 +2,8 @@
 Contributors: rachelbaker
 Tags: social, sharing, twitter, facebook, hackernews, linkedin, google+, widgets, social networks, performance
 Requires at least: 3.3
-Tested up to: 3.5-beta
-Stable tag: 1.6
+Tested up to: 3.5 RC2
+Stable tag: 1.6.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -63,47 +63,53 @@ Author
 == Screenshots ==
 
 1.	Social Sharing widgets are loaded under posts
-2.	Plugin Options page allows you to select which social sharing widgets to load
+2.	Plugin Options page allows you to specify the social sharing widgets to load and where to display them.
 3.	Scripts now load in asynchronous fashion after the page load completes
 
 
 == Changelog ==
 
-==1.6==
-Added option to prevent default CSS stylesheet from loading.
-Fixed bug where PHP Exception was thrown if post types array was empty.
-Tested with WordPress 3.5 Beta 3
+= 1.6.1 =
+* Fixed bug where widgets were not displaying on pages if option was specified.
+* Fixed bug where CSS styles for previous installations was still loading, even though the option to disable was selected.
+* Expanded post-type multi-selection box area on plugin options page.
+* Added instructions for selecting multiple post types from plugin options page.
+* Tested with WordPress 3.5 RC2
+
+= 1.6 =
+* Added option to prevent default CSS stylesheet from loading.
+* Fixed bug where PHP Exception was thrown if post types array was empty.
+* Tested with WordPress 3.5 Beta 3
 
 
-==1.5.1==
+= 1.5.1 =
 Fixed bug that would cause content in RSS feeds to not display.
 Fixed bug where PHP Exception was thrown on pages if the display options were not set.
 
 
-==1.5.0==
-Added ability to display social widgets on pages.
-Added ability to select which custom post types will display the social widgets.
-Reworked `async-share.js` file.  Now only the external social scripts that are selected to be displayed will be loaded.
-Improved display styles for social widgets.
+= 1.5.0 =
+* Added ability to display social widgets on pages.
+* Added ability to select which custom post types will display the social widgets.
+* Reworked `async-share.js` file.  Now only the external social scripts that are selected to be displayed will be loaded.
+* Improved display styles for social widgets.
 
 
-== 1.2.0 ==
-Combined function for plugin's script and style loading.
-Fixed bug that was generating a PHP error when no options were set.
-Tested with WordPress 3.4.1
+= 1.2.0 =
+* Combined function for plugin's script and style loading.
+* Fixed bug that was generating a PHP error when no options were set.
+* Tested with WordPress 3.4.1
 
 
-== 1.1.0 ==
-Added Display Options to plugin to allow sharing widgets to be displayed on blog and archive pages.
-Fixed bug with Facebook `fb-root` div not being detected before script loaded.
-Updated license to GPLv3
+= 1.1.0 =
+* Added Display Options to plugin to allow sharing widgets to be displayed on blog and archive pages.
+* Fixed bug with Facebook `fb-root` div not being detected before script loaded.
+* Updated license to GPLv3
 
-== 1.0.1 ==
-Added lazy loading to async-share.js
-Fixed issue with plugin settings link
+= 1.0.1 =
+* Added lazy loading to async-share.js
+* Fixed issue with plugin settings link
 
-== 1.0 ==
-
-Initial release
+= 1.0 =
+* Initial release
 
 

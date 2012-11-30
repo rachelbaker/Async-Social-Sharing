@@ -3,7 +3,7 @@
 Plugin Name: Async Social Sharing
 Plugin URI: http://www.rachelbaker.me
 Description: Simple social sharing plugin that loads the third-party scripts asynchronously to improve site performance. Plugin provides options to load the following sharing widgets: Twitter, Facebook, Google+, Linkedin and Hacker News.
-Version: 1.6.0
+Version: 1.6.1
 Author: Rachel Baker
 Author URI: http://www.rachelbaker.me
 Author Email: rachel@rachelbaker.me
@@ -29,6 +29,7 @@ License:
 require 'admin/admin.php'; // Plugin admin options setup
 global $async_share_options;
 
+add_action( 'init', 'async_register_css_styles');
 add_action('wp_enqueue_scripts', 'async_share_script_loader');
 add_filter('the_content', 'async_share_display');
 
@@ -45,15 +46,27 @@ function async_share_get_options()
 }
 
 /**
- * JavaScripts and CSS for front-end display of social widgets
+ * Registers included CSS for front-end display of social widgets
+ *
+ * Initialized by init hook
+ */
+function async_register_css_styles() {
+  wp_register_style( 'async_css', plugins_url( 'assets/css/async-share.css', __FILE__ ), false , '20121130', 'all' );
+}
+
+/**
+ * Loads JavaScript and optionally CSS for front-end display of social widgets
+ *
+ * Initialized by wp_enqueue_scripts hook
  */
 function async_share_script_loader()
 {
   wp_enqueue_script( 'async_js', plugins_url( 'assets/js/async-share.js', __FILE__ ), array( 'jquery' ), '', true );
   $options = async_share_get_options();
-  if ( !isset($options['disable_css']) || $options['disable_css'] !== true ) {
-    wp_enqueue_style( 'async_css', plugins_url( 'assets/css/async-share.css', __FILE__ ), false , '1.0', 'all' );
-  }
+  if ( isset($options['disable_css']) ) {
+        return;
+    }
+    wp_enqueue_style( 'async_css');
 }
 
 /**
@@ -216,30 +229,23 @@ function async_share_social_box()
       $async_share_options = async_share_get_options();
         if ( is_feed() ) {
           return $content;
+        } elseif ( is_page() ) {
+          if ( is_array( $async_share_options['types'] ) && in_array( 'page', $async_share_options['types'] ) ) {
+            return $content . $async_display_share_box;
+        }
+          return $content;
         } elseif ( is_home() || is_paged() ) {
           if ($async_share_options['paged'] == TRUE) {
             return $content . $async_display_share_box;
-          } else
-
+          }
             return $content;
         } elseif ( is_single() ) {
           $cpt = get_post_type();
           if ('post' == $cpt) {
             return $content . $async_display_share_box;
-          } elseif ( isset( $async_share_options['types'] ) ) {
-            if ( in_array($cpt, $async_share_options['types']) ) {
+          } elseif ( is_array( $async_share_options['types'] ) && in_array($cpt, $async_share_options['types']) ) {
             return $content . $async_display_share_box;
-          }
-        } else
-
-            return $content;
-        } elseif ( is_page() ) {
-          if ( isset( $async_share_options['types'] ) and in_array( "page", $async_share_options['types'] ) ) {
-            return $content . $async_display_share_box;
-        } else
-
-          return $content;
-      } else
-
+        }
+      }
         return $content;
   }

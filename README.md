@@ -14,6 +14,12 @@ Available display options include ability to display the sharing widgets on page
 
 ##Release Notes
 
+__Version 1.6.2__
+
+* Fixed bug where previous plugin users could not disable the css without removing and then re-adding the plugin.
+
+* Updated compatibility to support 3.5
+
 __Version 1.6.1__
 
 * Fixed bug where widgets were not displaying on pages if option was specified.

@@ -2,8 +2,8 @@
 Contributors: rachelbaker
 Tags: social, sharing, twitter, facebook, hackernews, linkedin, google+, widgets, social networks, performance
 Requires at least: 3.3
-Tested up to: 3.5 RC2
-Stable tag: 1.6.1
+Tested up to: 3.5
+Stable tag: 1.6.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -68,6 +68,9 @@ Author
 
 
 == Changelog ==
+= 1.6.2 =
+* Fixed bug where previous plugin users could not disable the css without removing and then re-adding the plugin.
+* Updated compatibility to support 3.5
 
 = 1.6.1 =
 * Fixed bug where widgets were not displaying on pages if option was specified.

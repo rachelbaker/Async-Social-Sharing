@@ -52,7 +52,7 @@
     <SELECT NAME="async_share_options[types][]" SIZE=5 multiple="multiple" >
         <?php $post_types = async_share_post_types_options();
             foreach ($post_types as $post_type) {
-            if ( is_array($options['types'] ) && in_array( $post_type, $options['types'] ) ) {
+            if ( isset($options['types']) && is_array($options['types'] ) && in_array( $post_type, $options['types'] ) ) {
             echo "\n\t<option selected='selected' value='" . esc_attr( $post_type ) . "'>  ".$post_type."</option>";
             } else
                 echo "\n\t<option value='" . esc_attr( $post_type ) . "'>".$post_type."</option>";

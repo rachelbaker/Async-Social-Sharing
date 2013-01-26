@@ -241,9 +241,7 @@ function async_share_display( $content ) {
     return $content;
   } elseif ( is_single() ) {
     $cpt = get_post_type();
-    if ( 'post' == $cpt ) {
-      return $content . $async_display_share_box;
-    } elseif ( is_array( $async_share_options['types'] ) && in_array( $cpt, $async_share_options['types'] ) ) {
+    if ( is_array( $async_share_options['types'] ) && in_array( $cpt, $async_share_options['types'] ) ) {
       return $content . $async_display_share_box;
     }
   }

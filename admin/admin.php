@@ -33,7 +33,8 @@ $args=array(
   '_builtin' => false
     );
     $cpt_types=get_post_types($args,'names');
-    array_push($cpt_types, 'page');
+    array_push($cpt_types, 'post');
+    array_push($cpt_types, 'page');    
     return $cpt_types;
 }
 

@@ -225,8 +225,6 @@ function async_share_social_box() {
  * Controls which template files the social widgets are displayed upon
  */
 function async_share_display( $content ) {
-//  $async_display_share_box_top = "";
-//  $async_display_share_box_bottom = "";
   $async_share_options = async_share_get_options();
   if ( $async_share_options['position_top'] == TRUE ) {
   	$async_display_share_box_top = async_share_social_box();

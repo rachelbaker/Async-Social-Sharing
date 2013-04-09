@@ -225,26 +225,30 @@ function async_share_social_box() {
  * Controls which template files the social widgets are displayed upon
  */
 function async_share_display( $content ) {
-  $async_display_share_box = async_share_social_box();
   $async_share_options = async_share_get_options();
+  if ( $async_share_options['position_top'] == TRUE ) {
+  	$async_display_share_box_top = async_share_social_box();
+  } else {
+  	$async_display_share_box_bottom = async_share_social_box();
+  }
   if ( is_feed() ) {
     return $content;
   } elseif ( is_page() ) {
     if ( is_array( $async_share_options['types'] ) && in_array( 'page', $async_share_options['types'] ) ) {
-      return $content . $async_display_share_box;
+      return $async_display_share_box_top . $content . $async_display_share_box_bottom;
     }
     return $content;
   } elseif ( is_home() || is_paged() ) {
     if ( $async_share_options['paged'] == TRUE ) {
-      return $content . $async_display_share_box;
+      return $async_display_share_box_top . $content . $async_display_share_box_bottom;
     }
     return $content;
   } elseif ( is_single() ) {
     $cpt = get_post_type();
     if ( 'post' == $cpt ) {
-      return $content . $async_display_share_box;
+      return $async_display_share_box_top . $content . $async_display_share_box_bottom;
     } elseif ( is_array( $async_share_options['types'] ) && in_array( $cpt, $async_share_options['types'] ) ) {
-      return $content . $async_display_share_box;
+      return $async_display_share_box_top . $content . $async_display_share_box_bottom;
     }
   }
   return $content;

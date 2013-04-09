@@ -1,28 +1,32 @@
 .async-wrapper {
-min-height: 40px;
-padding-top: 30px;
-margin-bottom: 20px;
-width: 100%;
-display: block;
-position: relative;
+	min-height: 40px;
+	padding-top: 30px;
+	margin-bottom: 20px;
+	width: 100%;
+	display: block;
+	position: relative;
 }
 
 .async-wrapper ul.async-list {
 	display: inline;
-    clear: both;
-    float: left;
+	clear: both;
+	float: left;
 	position: relative;
-    margin: 0;
-    padding: 0;
-    width: 100%;
+	margin: 0;
+	padding: 0;
+	width: 100%;
 }
 
-ul.async-list li.fb-share, ul.async-list li.gplus-share, ul.async-list li.linkedin-share, ul.async-list li.twitter-share, ul.async-list li.hn-share  {
-  display: inline-block;
-  height: 24px;
-  float: left;
-  list-style: none;
-  margin:0 auto;
-  padding: 0;
-  width: 20%;
+.async-wrapper ul.async-list li {
+	display: inline-block;
+	height: 24px;
+	float: left;
+	list-style: none;
+	margin:0 auto;
+	padding: 0;
+	width: 20%;
+}
+
+.async-wrapper ul.async-list li iframe {
+	max-width: none!important;
 }

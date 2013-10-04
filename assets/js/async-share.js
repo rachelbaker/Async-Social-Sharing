@@ -1,11 +1,11 @@
- /* ============================================================
- * async-share.js v1.01
+/* ============================================================
+ * async-share.js v2.0
  * @author: Rachel Baker
  *
  * Credits:
  * Inspired by Stoyan Stefanov and Aaron Peters
  * ============================================================
- * Copyright 2012 Rachel Baker
+ * Copyright 2013 Rachel Baker
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -20,39 +20,43 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * ============================================================ */
-jQuery(document).ready(function(d, s, id) {
-    // fb + common
-    var js, fjs = d.getElementsByTagName(s)[0];
-    // facebook
-    if (d.getElementById(id)) {return;}
-    if (jQuery('li.fb-share').length) {
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-    fjs.parentNode.insertBefore(js, fjs);
-    }
-    // tweet
-    if (jQuery('li.twitter-share').length) {
-    js = d.createElement(s);
-    js.src = '//platform.twitter.com/widgets.js';
-    fjs.parentNode.insertBefore(js, fjs);
-    }
-    // +1
-    if (jQuery('li.gplus-share').length) {
-    js = d.createElement(s);
-    js.src = 'https://apis.google.com/js/plusone.js';
-    fjs.parentNode.insertBefore(js, fjs);
-    }
-    // linkedin
-    if (jQuery('li.linkedin-share').length) {
-    js = d.createElement(s);
-    js.src = '//platform.linkedin.com/in.js';
-    fjs.parentNode.insertBefore(js, fjs);
-    }
-    // hackernews
-    if (jQuery('li.hn-share').length) {
-    js = d.createElement(s);
-    js.src = '//hnbutton.appspot.com/static/hn.js';
-    fjs.parentNode.insertBefore(js, fjs);
-    }
+jQuery(document).ready(function (d, s, id) {
+	// fb + common
+	var js, fjs = d.getElementsByTagName(s)[0];
+	// facebook
+	if (d.getElementById(id)) {
+		return;
+	}
+	if (jQuery('li.fb-share').length > 0) {
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+		fjs.parentNode.insertBefore(js, fjs);
+	}
+	// tweet
+	if (jQuery('li.twitter-share').length > 0) {
+		js = d.createElement(s);
+		js.src = '//platform.twitter.com/widgets.js';
+		fjs.parentNode.insertBefore(js, fjs);
+	}
+	// +1
+	if (jQuery('li.gplus-share').length > 0) {
+		js = d.createElement(s);
+		js.src = 'https://apis.google.com/js/plusone.js';
+		fjs.parentNode.insertBefore(js, fjs);
+	}
+	// linkedin
+	if (jQuery('li.linkedin-share').length > 0) {
+		js = d.createElement(s);
+		js.src = '//platform.linkedin.com/in.js';
+		fjs.parentNode.insertBefore(js, fjs);
+	}
+	// hackernews
+	if (jQuery('li.hn-share').length > 0) {
+		js = d.createElement(s);
+		js.src = '//hnbutton.appspot.com/static/hn.js';
+		fjs.parentNode.insertBefore(js, fjs);
+	}
 
-  }(document, 'script'));
+}(document, 'script'));
+

@@ -14,11 +14,21 @@ Available display options include ability to display the sharing widgets on page
 
 ##Release Notes
 
+__Version 1.7.0__
+
+* Added option to display or hide sharing widgets from posts.
+
+* Restructured file organization.
+
+* Tested compatibility with 3.7
+
+
 __Version 1.6.2__
 
 * Fixed bug where previous plugin users could not disable the css without removing and then re-adding the plugin.
 
 * Updated compatibility to support 3.5
+
 
 __Version 1.6.1__
 
@@ -32,7 +42,8 @@ __Version 1.6.1__
 
 * Tested with WordPress 3.5 RC2
 
-__Version 1.6__
+
+__Version 1.6.0__
 
 * Added option to prevent default CSS stylesheet from loading.
 
@@ -48,7 +59,6 @@ __Version 1.5.1__
 * Fixed bug where PHP Exception was thrown on pages if the display options were not set.
 
 
-
 __Version 1.5.0__
 
 * Added ability to display social widgets on pages.
@@ -59,6 +69,7 @@ __Version 1.5.0__
 
 * Improved display styles for social widgets.
 
+
 __Version 1.2.0__
 
 * Combined function for plugin's script and style loading.
@@ -66,6 +77,7 @@ __Version 1.2.0__
 * Fixed bug that was generating a PHP error when no options were set.
 
 * Tested with WordPress 3.4.1
+
 
 __Version 1.1.0__
 
@@ -75,13 +87,14 @@ __Version 1.1.0__
 
 * Updated license to GPLv3
 
+
 __Version 1.0.1__
 
 * Added lazy loading to async-share.js
 
 * Fixed issue with plugin settings link
 
-__Version 1.0__
+__Version 1.0.0__
 
 * Initial release
 

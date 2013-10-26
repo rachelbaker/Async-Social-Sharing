@@ -61,7 +61,6 @@ class Async_Social_Sharing {
 		add_filter( 'plugin_action_links', array( $this, 'add_settings_link' ), 10, 2 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 		add_filter( 'the_content', array( $this, 'display_check' ) );
-
 	}
 
 	public function register_options() {

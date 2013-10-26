@@ -1,16 +1,15 @@
 === Plugin Name ===
 Contributors: rachelbaker
 Tags: social, sharing, twitter, facebook, hackernews, linkedin, google+, widgets, social networks, performance
-Requires at least: 3.3
-Tested up to: 3.5
-Stable tag: 1.6.2
+Requires at least: 3.5
+Tested up to: 3.7
+Stable tag: 1.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Simple social plugin that loads popular social sharing widgets asynchronously after the page loads for optimal site performance.
 
 == Description ==
-
 
 Simple social sharing plugin that loads the third-party scripts asynchronously and after the page loads to improve site performance.
 
@@ -29,8 +28,7 @@ Asynchronous loading allows multiple files to load parallel to each other. Inste
 
 Dependencies
 
-*	jQuery 1.7
-*	WordPress 3.3+
+*	WordPress 3.5+
 *	Content worth sharing
 
 Contributors Welcome
@@ -68,6 +66,12 @@ Author
 
 
 == Changelog ==
+
+= 1.7.0 =
+* Added option to display or hide sharing widgets from posts.
+* Restructured file organization.
+* Tested compatibility with 3.7
+
 = 1.6.2 =
 * Fixed bug where previous plugin users could not disable the css without removing and then re-adding the plugin.
 * Updated compatibility to support 3.5

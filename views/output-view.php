@@ -15,7 +15,7 @@ $options = $this->get_options();
 	<ul class="async-list">
 		<?php if ( isset( $options['twitter'] ) ) : ?>
 			<li class="twitter-share">
-				<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php the_permalink(); ?>">Tweet</a>
+				<a href="<?php echo esc_url( 'https://twitter.com/share' ); ?>" class="twitter-share-button" data-url="<?php the_permalink(); ?>">Tweet</a>
 			</li>
 		<?php endif; ?>
 		<?php if ( isset( $options['facebook'] ) ) : ?>
@@ -35,10 +35,8 @@ $options = $this->get_options();
 		<?php endif; ?>
 		<?php if ( isset( $options['hackernews'] ) ) : ?>
 			<li class="hn-share">
-				<a href="http://news.ycombinator.com/submit" class="hn-share-button" data-url="<?php the_permalink(); ?>">Vote on HN</a>
+				<a href="<?php echo esc_url( 'http://news.ycombinator.com/submit' ); ?>" class="hn-share-button" data-url="<?php the_permalink(); ?>">Vote on HN</a>
 			</li>
 		<?php endif; ?>
 	</ul>
 </div>
-
-

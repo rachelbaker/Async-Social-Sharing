@@ -3,7 +3,7 @@ Contributors: rachelbaker
 Tags: social, sharing, twitter, facebook, hackernews, linkedin, google+, widgets, social networks, performance
 Requires at least: 3.5
 Tested up to: 3.7
-Stable tag: 1.7
+Stable tag: 1.7.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -67,6 +67,10 @@ Author
 
 == Changelog ==
 
+= 1.7.1 =
+* Fixed bug where "headers already sent" message was displayed upon plugin activation due to blank line at top of main plugin file.
+* Enabled automatic plugin updates for WordPress 3.7 users.
+
 = 1.7.0 =
 * Added option to display or hide sharing widgets from posts.
 * Restructured file organization.
@@ -118,5 +122,3 @@ Fixed bug where PHP Exception was thrown on pages if the display options were no
 
 = 1.0 =
 * Initial release
-
-

@@ -8,21 +8,23 @@ add_action( 'admin_menu', 'async_share_add_options_page' );
 
 // Init plugin options to white list our options
 function async_share_init() {
+	$cache_buster = filemtime( ASYNC_SOCIAL_SHARING_PLUGIN_PATH . 'assets/css/async-admin.css' );
+	wp_register_style( 'async-admin', ASYNC_SOCIAL_SHARING_PLUGIN_URL . '/assets/css/async-admin.css', false, $cache_buster, 'all' );
+
 	register_setting( 'async_share_plugin_options', 'async_share_options', 'async_share_validate_options' );
 }
 
 // Add menu page
 function async_share_add_options_page() {
 	$page = add_options_page( 'Async Social Sharing Options', 'Async Sharing Options', 'manage_options', __FILE__, 'async_share_render_form' );
+
 	// loading admin style only in plugin option page
 	add_action( 'admin_print_styles-' . $page, 'async_share_admin_style' );
 }
 
-// Defining admin style
+// Enqueue admin style
 function async_share_admin_style() {
-	$cache_buster = filemtime( ASYNC_SOCIAL_SHARING_PLUGIN_PATH . 'assets/css/async-admin.css' );
-
-	wp_enqueue_style( 'async_admin', ASYNC_SOCIAL_SHARING_PLUGIN_URL . '/assets/css/async-admin.css', false, $cache_buster, 'all' );
+	wp_enqueue_style( 'async-admin' );
 }
 
 function async_share_post_types_options() {

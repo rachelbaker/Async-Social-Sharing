@@ -14,9 +14,18 @@ Available display options include ability to display the sharing widgets on page
 
 ##Release Notes
 
+__Version 1.7.1__
+
+* Fixed bug where "headers already sent" message was displayed upon plugin activation due to blank line at top of main plugin file.
+
+* Enabled automatic plugin updates for WordPress 3.7 users.
+
+
 __Version 1.7.0__
 
 * Added option to display or hide sharing widgets from posts.
+
+* Added cache busting to plugin css and js files for future automatic update compatibility.
 
 * Restructured file organization.
 
@@ -101,6 +110,7 @@ __Version 1.0.0__
 __Upcoming Versions Wishlist__
 
 *   Allow re-arranging of social widgets
+*   Add internationalization to plugin.
 
 
 ##Screenshots
@@ -116,7 +126,6 @@ Scripts now load in asynchronous fashion after the page load completes:
 
 ##Dependencies
 
-*	jQuery 1.7+
 *	WordPress
 *	Content worth sharing
 
@@ -136,4 +145,3 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
-

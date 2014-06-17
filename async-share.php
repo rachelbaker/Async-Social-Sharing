@@ -1,10 +1,9 @@
-
 <?php
 /**
  * Plugin Name: Async Social Sharing
  * Plugin URI: http://www.rachelbaker.me
  * Description: Simple social sharing plugin that loads the third-party scripts asynchronously to improve site performance. Plugin provides options to load the following sharing widgets: Twitter, Facebook, Google+, Linkedin and Hacker News.
- * Version: 1.7.0
+ * Version: 1.7.1
  * Author: Rachel Baker
  * Author URI: http://www.rachelbaker.me
  * Author Email: rachel@rachelbaker.me
@@ -32,6 +31,13 @@
  */
 define( 'ASYNC_SOCIAL_SHARING_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ASYNC_SOCIAL_SHARING_PLUGIN_URL', plugins_url( '', __FILE__ ) );
+
+/**
+* Allow auto-updates of plugin for WordPress 3.7+.
+*/
+if ( defined( 'WP_AUTO_UPDATE_CORE' ) ) {
+	add_filter( 'auto_update_plugin', '__return_true' );
+}
 
 class Async_Social_Sharing {
 

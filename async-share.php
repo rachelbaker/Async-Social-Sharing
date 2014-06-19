@@ -58,9 +58,10 @@ class Async_Social_Sharing {
 		return $instance;
 	}
 
-	protected function __construct() {
-		/** Dummy constructor */
-	}
+	/**
+	 * Dummy constructor, nothing to see here.
+	 */
+	protected function __construct() {}
 
 	private function setup_actions() {
 		add_action( 'init', array( $this, 'register_styles' ) );
@@ -94,11 +95,16 @@ class Async_Social_Sharing {
 	}
 
 
-	// Render the Plugin options form
+	/**
+	 * Render the plugin settings screen.
+	 *
+	 * @return string
+	 */
 	public function display_admin_view() {
 		ob_start();
+		include ASYNC_SOCIAL_SHARING_PLUGIN_PATH . 'views/admin-view.php';
 
-		return include ASYNC_SOCIAL_SHARING_PLUGIN_PATH . 'views/admin-view.php';
+		return ob_get_clean();
 	}
 
 	public function add_settings_link( $links, $file ) {

@@ -9,7 +9,7 @@
  * Author Email: rachel@rachelbaker.me
  * License:
  *
- *  Copyright 2013 Rachel Baker (rachel@rachelbaker.me)
+ *  Copyright 2014 Rachel Baker (rachel@rachelbaker.me)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -63,40 +63,77 @@ class Async_Social_Sharing {
 	 */
 	protected function __construct() {}
 
+	/**
+	 * Register the action hooks for Async Social Sharing.
+	 */
 	private function setup_actions() {
-		add_action( 'init', array( $this, 'register_styles' ) );
-		add_action( 'admin_init', array( $this, 'register_options' ) );
-		add_action( 'admin_menu', array( $this, 'add_options_page' ) );
+		add_action( 'init',               array( $this, 'register_styles' ) );
+		add_action( 'admin_init',         array( $this, 'register_options' ) );
+		add_action( 'admin_menu',         array( $this, 'add_options_page' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 	}
 
+	/**
+	 * Register the filter hooks for Async Social Sharing.
+	 */
 	private function setup_filters() {
 		add_filter( 'plugin_action_links', array( $this, 'add_settings_link' ), 10, 2 );
-		add_filter( 'the_content', array( $this, 'display_check' ) );
+		add_filter( 'the_content',         array( $this, 'display_check' ) );
 	}
 
+	/**
+	 * Register the settings for Async Social Sharing.
+	 * Options are sanitized with the validate_options callback method.
+	 *
+	 * @return unknown
+	 */
 	public function register_options() {
-		register_setting( 'async_share_plugin_options', 'async_share_options', array( $this, 'validate_options' ) );
+		return register_setting(
+			'async_share_plugin_options',
+			'async_share_options',
+			array( $this, 'validate_options' )
+		);
 	}
 
+	/**
+	 * Returns the options for Async Social Sharing.
+	 *
+	 * @return mixed|void
+	 */
 	public function get_options() {
-
 		return get_option( 'async_share_options' );
 	}
 
+	/**
+	 * Callback sanitization for the Async Social Sharing option values.
+	 *
+	 * @param $input
+	 *
+	 * @return mixed
+	 */
 	public static function validate_options( $input ) {
 		sanitize_text_field( $input );
 
 		return $input;
 	}
 
+	/**
+	 * Adds Async Social Sharing sub-menu page to the options main menu.
+	 *
+	 * @return bool|string
+	 */
 	public function add_options_page() {
-		$page = add_options_page( 'Async Social Sharing Options', 'Async Sharing Options', 'manage_options', __FILE__, array( $this, 'display_admin_view' ) );
+		return add_options_page(
+			'Async Social Sharing Options',
+			'Async Sharing Options',
+			'manage_options',
+			__FILE__,
+			array( $this, 'display_admin_view' )
+		);
 	}
 
-
 	/**
-	 * Render the plugin settings screen.
+	 * Renders the plugin settings screen.
 	 *
 	 * @return string
 	 */
@@ -107,6 +144,14 @@ class Async_Social_Sharing {
 		return ob_get_flush();
 	}
 
+	/**
+	 * Adds settings link to plugin screen for Async Social Sharing.
+	 *
+	 * @param $links
+	 * @param $file
+	 *
+	 * @return array
+	 */
 	public function add_settings_link( $links, $file ) {
 		$plugin_file_name = plugin_basename( __FILE__ );
 
@@ -140,15 +185,17 @@ class Async_Social_Sharing {
 		wp_enqueue_script( 'async_js', ASYNC_SOCIAL_SHARING_PLUGIN_URL . '/assets/js/async-share.js', array( 'jquery' ), $cache_buster, true );
 
 		if ( ! isset( $options['disable_css'] ) ) {
-
 			wp_enqueue_style( 'async_css' );
 		}
-
 	}
 
+	/**
+	 * Renders the social sharing widgets.
+	 *
+	 * @return string
+	 */
 	public function display_output_view() {
 		$options = $this->get_options();
-
 		if ( ! empty( $options ) ) {
 			ob_start();
 			include( ASYNC_SOCIAL_SHARING_PLUGIN_PATH . 'views/output-view.php' );
@@ -160,7 +207,7 @@ class Async_Social_Sharing {
 	}
 
 	/**
-	 * Controls which template files the social widgets are displayed upon
+	 * Determines where the social sharing widgets should be displayed.
 	 */
 	public function display_check( $content ) {
 		$async_share_output = $this->display_output_view();
@@ -170,6 +217,7 @@ class Async_Social_Sharing {
 
 		// return early instead of hooking into feed content.
 		if ( is_feed() ) {
+
 			return $content;
 		}
 
@@ -215,8 +263,7 @@ class Async_Social_Sharing {
 		return $content;
 	}
 
-}
-
+} // end of Async_Social_Sharing class
 
 /**
  * Initializes the Async_Social_Sharing class.
@@ -224,17 +271,15 @@ class Async_Social_Sharing {
  * @return Object
  */
 function async_social() {
-
 	return Async_Social_Sharing::get_instance();
 }
 async_social();
 
-
 /**
  * Outputs async social sharing for manual display.
+ * Can be used as a template tag within theme files.
  */
 function async_social_display() {
 	$instance = async_social();
-
 	echo $instance->display_output_view();
 }

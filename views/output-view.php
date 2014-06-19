@@ -20,7 +20,7 @@ $options = $this->get_options();
 		<?php endif; ?>
 		<?php if ( isset( $options['facebook'] ) ) : ?>
 			<li class="fb-share">
-				<div class="fb-like" data-href="<?php the_permalink(); ?>" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="verdana"></div>
+				<div class="fb-share-button" data-href="<?php the_permalink(); ?>" data-type="button_count" data-width="100"></div>
 			</li>
 		<?php endif; ?>
 		<?php if ( isset( $options['gplus'] ) ) : ?>

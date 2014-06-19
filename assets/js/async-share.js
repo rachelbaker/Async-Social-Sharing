@@ -23,6 +23,8 @@
 jQuery(document).ready(function (d, s, id) {
 	// fb + common
 	var js, fjs = d.getElementsByTagName(s)[0];
+	var appID = Async_Social_Sharing.appid;
+
 	// facebook
 	if (d.getElementById(id)) {
 		return;
@@ -30,7 +32,11 @@ jQuery(document).ready(function (d, s, id) {
 	if (jQuery('li.fb-share').length > 0) {
 		js = d.createElement(s);
 		js.id = id;
-		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+		if ( appID.length > 0 ) {
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=" + appID + "&version=v2.0";
+		} else {
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+		}
 		fjs.parentNode.insertBefore(js, fjs);
 	}
 	// tweet

@@ -51,6 +51,11 @@
 		</div>
 		<br />
 
+		<label class="help-block"><?php _e( 'Facebook Application ID' ); ?></label>
+		<input name="async_share_options[fb_appid]" type="text" value="<?php if ( isset( $options['fb_appid'] ) ) { echo $options['fb_appid']; } ?>" />
+		<p class="description"><?php _e( 'Enables FB Graph API tracking.' ); ?></p>
+		<br />
+
 		<h3>Location</h3>
 
 		<p class="help-block"><?php _e( 'What position would you prefer to display the selected social sharing widgets?' ); ?></p>

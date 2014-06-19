@@ -182,7 +182,12 @@ class Async_Social_Sharing {
 		$options      = $this->get_options();
 		$cache_buster = filemtime( ASYNC_SOCIAL_SHARING_PLUGIN_PATH . 'assets/js/async-share.js' );
 
+
 		wp_enqueue_script( 'async_js', ASYNC_SOCIAL_SHARING_PLUGIN_URL . '/assets/js/async-share.js', array( 'jquery' ), $cache_buster, true );
+
+		if ( isset( $options['fb_appid'] ) ) {
+			wp_localize_script( 'async_js', 'Async_Social_Sharing', array( 'appid' => $options['fb_appid'] ) );
+		}
 
 		if ( ! isset( $options['disable_css'] ) ) {
 			wp_enqueue_style( 'async_css' );

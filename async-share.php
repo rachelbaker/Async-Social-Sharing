@@ -153,7 +153,7 @@ class Async_Social_Sharing {
 			ob_start();
 			include( ASYNC_SOCIAL_SHARING_PLUGIN_PATH . 'views/output-view.php' );
 
-			return ob_get_flush();
+			return ob_get_clean();
 		}
 
 		return;

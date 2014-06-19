@@ -97,7 +97,7 @@
 
 			<p class="description"><?php _e( 'To select multiple post types hold down the Ctrl (Windows) or Command (OSX) key while selecting' ); ?></p>
 
-			<input type="submit" class="btn btn-primary" value="<?php _e( 'Save Changes' ) ?>" />
+			<input type="submit" class="button" value="<?php _e( 'Save Changes' ) ?>" />
 
 	</form>
 	<hr />

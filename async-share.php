@@ -3,7 +3,7 @@
  * Plugin Name: Async Social Sharing
  * Plugin URI: http://www.rachelbaker.me
  * Description: Simple social sharing plugin that loads the third-party scripts asynchronously to improve site performance. Plugin provides options to load the following sharing widgets: Twitter, Facebook, Google+, Linkedin and Hacker News.
- * Version: 1.7.1
+ * Version: 1.8.0
  * Author: Rachel Baker
  * Author URI: http://www.rachelbaker.me
  * Author Email: rachel@rachelbaker.me
@@ -41,31 +41,36 @@ if ( defined( 'WP_AUTO_UPDATE_CORE' ) ) {
 
 class Async_Social_Sharing {
 
-	private static $instance;
-
 	/**
 	 * Initializes Async_Social_Sharing Class
 	 *
 	 * @return Object new Async_Social_Sharing Class();
 	 */
 	public static function get_instance() {
-		if ( ! self::$instance ) {
-			self::$instance = new self();
+		static $instance = null;
+
+		if ( null === $instance ) {
+			$instance = new static();
+			$instance->setup_actions();
+			$instance->setup_filters();
 		}
 
-		return self::$instance;
+		return $instance;
 	}
 
-	private function __construct() {
-		add_action( 'init', array( $this, 'init' ) );
+	protected function __construct() {
+		/** Dummy constructor */
+	}
+
+	private function setup_actions() {
 		add_action( 'init', array( $this, 'register_styles' ) );
-	}
-
-	public function init() {
 		add_action( 'admin_init', array( $this, 'register_options' ) );
 		add_action( 'admin_menu', array( $this, 'add_options_page' ) );
-		add_filter( 'plugin_action_links', array( $this, 'add_settings_link' ), 10, 2 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
+	}
+
+	private function setup_filters() {
+		add_filter( 'plugin_action_links', array( $this, 'add_settings_link' ), 10, 2 );
 		add_filter( 'the_content', array( $this, 'display_check' ) );
 	}
 
@@ -86,15 +91,6 @@ class Async_Social_Sharing {
 
 	public function add_options_page() {
 		$page = add_options_page( 'Async Social Sharing Options', 'Async Sharing Options', 'manage_options', __FILE__, array( $this, 'display_admin_view' ) );
-
-		add_action( 'admin_print_styles-' . $page, array( $this, 'load_admin_styles' ) );
-	}
-
-	// Defining admin style
-	public function load_admin_styles() {
-		$cache_buster = filemtime( ASYNC_SOCIAL_SHARING_PLUGIN_PATH . 'assets/css/async-admin.css' );
-
-		wp_enqueue_style( 'async_admin', ASYNC_SOCIAL_SHARING_PLUGIN_URL . '/assets/css/async-admin.css', false, $cache_buster, 'all' );
 	}
 
 
@@ -201,6 +197,27 @@ class Async_Social_Sharing {
 
 		return $content;
 	}
+
 }
 
-Async_Social_Sharing::get_instance();
+
+/**
+ * Initializes the Async_Social_Sharing class.
+ *
+ * @return Object
+ */
+function async_social() {
+
+	return Async_Social_Sharing::get_instance();
+}
+async_social();
+
+
+/**
+ * Outputs async social sharing for manual display.
+ */
+function async_social_display() {
+	$instance = async_social();
+
+	echo $instance->display_output_view();
+}

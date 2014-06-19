@@ -1,5 +1,5 @@
 /* ============================================================
- * async-share.js v1.7.0
+ * async-share.js v1.8.0
  * @author: Rachel Baker
  *
  * Credits:

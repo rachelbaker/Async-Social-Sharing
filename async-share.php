@@ -159,6 +159,8 @@ class Async_Social_Sharing {
 	public function display_check( $content ) {
 		$async_share_output = $this->display_output_view();
 		$options            = $this->get_options();
+		$above_content      = $async_share_output . $content;
+		$below_content      = $content . $async_share_output;
 
 		// return early instead of hooking into feed content.
 		if ( is_feed() ) {
@@ -167,8 +169,11 @@ class Async_Social_Sharing {
 
 		if ( is_page() ) {
 			if ( is_array( $options['types'] ) && in_array( 'page', $options['types'] ) ) {
-
-				return $content . $async_share_output;
+				if ( isset( $options['position'] ) && 'above' == $options['position'] ) {
+					return $above_content;
+				} else {
+					return $below_content;
+				}
 			}
 
 			return $content;
@@ -176,8 +181,11 @@ class Async_Social_Sharing {
 
 		if ( is_home() || is_paged() ) {
 			if ( is_array( $options ) && isset( $options['paged'] ) ) {
-
-				return $content . $async_share_output;
+				if ( isset( $options['position'] ) && 'above' == $options['position'] ) {
+					return $above_content;
+				} else {
+					return $below_content;
+				}
 			}
 
 			return $content;
@@ -188,8 +196,11 @@ class Async_Social_Sharing {
 			$cpt = get_post_type();
 
 			if ( is_array( $options['types'] ) && in_array( $cpt, $options['types'] ) ) {
-
-				return $content . $async_share_output;
+				if ( isset( $options['position'] ) && 'above' == $options['position'] ) {
+					return $above_content;
+				} else {
+					return $below_content;
+				}
 			}
 
 			return $content;

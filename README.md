@@ -10,9 +10,24 @@ The plugin provides settings to load any of the following sharing widgets:
 * Linkedin
 * Hacker News
 
-Available display options include ability to display the sharing widgets on pages, specific custom post types or blog and archive pages.
+Available display options include ability to display the sharing widgets on above or below content on pages, specific custom post types or blog and archive pages.
 
 ##Release Notes
+
+__Version 1.8.0__
+
+* Added `async_social_display()` function to be used as a template tag to output the social sharing widgets anywhere theme developers desire within the loop.
+
+* Added option allowing site administrators to choose if the social sharing widgets should be output before or after the content.  props @dustyf
+
+* Changed settings screen to use WordPress default admin styles to fix checkbox display in WordPress 3.8+.
+
+* Removed bloated admin stylesheet.
+
+* Minor refactoring of plugin instance loading.
+
+* Minor code formatting changes.
+
 
 __Version 1.7.1__
 
@@ -138,7 +153,7 @@ Scripts now load in asynchronous fashion after the page load completes:
  * HackerNews button code by [Ilya Grigorik](https://github.com/igrigorik/hackernews-button)
 
 ##License
-Copyright 2012 Rachel Baker (rachel@rachelbaker.me)
+Copyright 2014 Rachel Baker (rachel@rachelbaker.me)
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 

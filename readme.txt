@@ -2,8 +2,8 @@
 Contributors: rachelbaker
 Tags: social, sharing, twitter, facebook, hackernews, linkedin, google+, widgets, social networks, performance
 Requires at least: 3.5
-Tested up to: 3.7
-Stable tag: 1.7.1
+Tested up to: 3.9.1
+Stable tag: 1.8.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,7 +21,8 @@ The plugin provides settings to load any of the following sharing widgets:
 *	Linkedin
 *	Hacker News
 
-Available display options include ability to display the sharing widgets on pages, specific custom post types or blog and archive pages.
+Available display options include ability to display the sharing widgets on above or below content on pages, specific custom post types or blog and archive pages.
+
 
 Why is Asynchronous script loading better?
 Asynchronous loading allows multiple files to load parallel to each other. Instead of having to wait for Twitter to respond with their script, the browser moves on and starts fetching the next request.
@@ -66,6 +67,14 @@ Author
 
 
 == Changelog ==
+
+= 1.8.0 =
+* Added `async_social_display()` function to be used as a template tag to output the social sharing widgets anywhere theme developers desire within the loop.
+* Added option allowing site administrators to choose if the social sharing widgets should be output before or after the content.  props @dustyf
+* Changed settings screen to use WordPress default admin styles to fix checkbox display in WordPress 3.8+.
+* Removed bloated admin stylesheet.
+* Minor refactoring of plugin instance loading.
+* Minor code formatting changes.
 
 = 1.7.1 =
 * Fixed bug where "headers already sent" message was displayed upon plugin activation due to blank line at top of main plugin file.

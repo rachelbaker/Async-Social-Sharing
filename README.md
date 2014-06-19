@@ -1,6 +1,7 @@
 #Async Social Sharing WordPress Plugin
 
-Simple social plugin that loads popular social sharing widgets asynchronously after the page loads for optimal site performance.
+Simple social plugin that loads popular social sharing widgets asynchronously
+after the page loads for optimal site performance.
 
 The plugin provides settings to load any of the following sharing widgets:
 
@@ -10,17 +11,25 @@ The plugin provides settings to load any of the following sharing widgets:
 * Linkedin
 * Hacker News
 
-Available display options include ability to display the sharing widgets on above or below content on pages, specific custom post types or blog and archive pages.
+Available display options include ability to display the sharing widgets on
+above or below content on pages, specific custom post types or blog and archive
+pages.
 
 ##Release Notes
 
 __Version 1.8.0__
 
-* Added `async_social_display()` function to be used as a template tag to output the social sharing widgets anywhere theme developers desire within the loop.
+* Added `async_social_display()` function to be used as a template tag to output
+the social sharing widgets anywhere theme developers desire within the loop.
 
-* Added option allowing site administrators to choose if the social sharing widgets should be output before or after the content.  props @dustyf
+* Added option to allow site administrators to enter their Facebook Application
+ID.
 
-* Changed settings screen to use WordPress default admin styles to fix checkbox display in WordPress 3.8+.
+* Added option to allow site administrators to choose if the social sharing
+widgets should be output before or after the content.  props @dustyf
+
+* Changed settings screen to use WordPress default admin styles to fix checkbox
+display in WordPress 3.8+.
 
 * Removed bloated admin stylesheet.
 
@@ -31,7 +40,8 @@ __Version 1.8.0__
 
 __Version 1.7.1__
 
-* Fixed bug where "headers already sent" message was displayed upon plugin activation due to blank line at top of main plugin file.
+* Fixed bug where "headers already sent" message was displayed upon plugin
+activation due to blank line at top of main plugin file.
 
 * Enabled automatic plugin updates for WordPress 3.7 users.
 
@@ -40,7 +50,8 @@ __Version 1.7.0__
 
 * Added option to display or hide sharing widgets from posts.
 
-* Added cache busting to plugin css and js files for future automatic update compatibility.
+* Added cache busting to plugin css and js files for future automatic update
+compatibility.
 
 * Restructured file organization.
 
@@ -49,7 +60,8 @@ __Version 1.7.0__
 
 __Version 1.6.2__
 
-* Fixed bug where previous plugin users could not disable the css without removing and then re-adding the plugin.
+* Fixed bug where previous plugin users could not disable the css without
+removing and then re-adding the plugin.
 
 * Updated compatibility to support 3.5
 
@@ -58,7 +70,8 @@ __Version 1.6.1__
 
 * Fixed bug where widgets were not displaying on pages if option was specified.
 
-* Fixed bug where CSS styles for previous installations was still loading, even though the option to disable was selected.
+* Fixed bug where CSS styles for previous installations was still loading, even
+though the option to disable was selected.
 
 * Expanded post-type multi-selection box area on plugin options page.
 
@@ -80,16 +93,19 @@ __Version 1.5.1__
 
 * Fixed bug that would cause content in RSS feeds to not display.
 
-* Fixed bug where PHP Exception was thrown on pages if the display options were not set.
+* Fixed bug where PHP Exception was thrown on pages if the display options were
+not set.
 
 
 __Version 1.5.0__
 
 * Added ability to display social widgets on pages.
 
-* Added ability to select which custom post types will display the social widgets.
+* Added ability to select which custom post types will display the social
+widgets.
 
-* Reworked `async-share.js` file.  Now only the external social scripts that are selected to be displayed will be loaded.
+* Reworked `async-share.js` file.  Now only the external social scripts that are
+selected to be displayed will be loaded.
 
 * Improved display styles for social widgets.
 
@@ -105,7 +121,8 @@ __Version 1.2.0__
 
 __Version 1.1.0__
 
-* Added Display Options to plugin to allow sharing widgets to be displayed on blog and archive pages.
+* Added Display Options to plugin to allow sharing widgets to be displayed on
+blog and archive pages.
 
 * Fixed bug with Facebook `fb-root` div not being detected before script loaded.
 
@@ -155,8 +172,13 @@ Scripts now load in asynchronous fashion after the page load completes:
 ##License
 Copyright 2014 Rachel Baker (rachel@rachelbaker.me)
 
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License along with
+this program.  If not, see <http://www.gnu.org/licenses/>.

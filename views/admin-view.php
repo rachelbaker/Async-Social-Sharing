@@ -58,7 +58,19 @@
 
 			<h3>Display Options</h3>
 
-			<p class="help-block">Display the sharing widgets under the posts on blog and archive pages (not just on the single post)</p>
+			<p class="help-block">Display sharing widgets above or below the content?</p>
+
+			<div class="radio">
+				<label><input name="async_share_options[position]" type="radio" value="above" <?php if ( isset( $options['position'] ) ) {
+						checked( 'above', $options['position'] );
+					} ?> /> Display above content </label>
+				<input name="async_share_options[position]" type="radio" value="below" <?php if ( isset( $options['position'] ) ) {
+					checked( 'below', $options['position'] );
+				} ?> /> Display below content </label>
+			</div>
+
+
+			<p class="help-block">Display the sharing widgets with the posts on blog and archive pages (not just on the single post)</p>
 
 			<div class="checkbox">
 				<label><input name="async_share_options[paged]" type="checkbox" value="true" <?php if ( isset( $options['paged'] ) ) {

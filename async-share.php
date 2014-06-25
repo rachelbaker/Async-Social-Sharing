@@ -41,21 +41,21 @@ if ( defined( 'WP_AUTO_UPDATE_CORE' ) ) {
 
 class Async_Social_Sharing {
 
+	private static $instance;
+
 	/**
 	 * Initializes Async_Social_Sharing Class
 	 *
 	 * @return Object new Async_Social_Sharing Class();
 	 */
 	public static function get_instance() {
-		static $instance = null;
-
-		if ( null === $instance ) {
-			$instance = new static();
-			$instance->setup_actions();
-			$instance->setup_filters();
+		if ( ! self::$instance ) {
+			self::$instance = new self();
+			self::$instance->setup_actions();
+			self::$instance->setup_filters();
 		}
 
-		return $instance;
+		return self::$instance;
 	}
 
 	/**

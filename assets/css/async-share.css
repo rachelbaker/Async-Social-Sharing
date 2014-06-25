@@ -26,3 +26,10 @@ ul.async-list li.fb-share, ul.async-list li.gplus-share, ul.async-list li.linked
 	padding: 0;
 	width: 20%;
 }
+
+/**
+ * Alignment fix for Facebook widget
+ */
+ li.fb-share .fb_iframe_widget span {
+ 	vertical-align: baseline !important;
+ }

@@ -17,6 +17,14 @@ pages.
 
 ##Release Notes
 
+__Version 1.8.1__
+
+* Fixed bug where plugin would cause a fatal error for PHP 5.2 and under by
+changing class initialization process.
+
+* Added minor style fix for Facebook sharing widget alignment.
+
+
 __Version 1.8.0__
 
 * Added `async_social_display()` function to be used as a template tag to output

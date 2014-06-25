@@ -4,7 +4,7 @@ Tags: social, sharing, twitter, facebook, hackernews, linkedin, google+,
 widgets, social networks, performance
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.8.0
+Stable tag: 1.8.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -75,6 +75,11 @@ and where to display them.
 
 
 == Changelog ==
+
+== 1.8.1 ==
+* Fixed bug where plugin would cause a fatal error for PHP 5.2 and under by
+changing class initialization process.
+* Added minor style fix for Facebook sharing widget alignment.
 
 = 1.8.0 =
 * Added `async_social_display()` function to be used as a template tag to output

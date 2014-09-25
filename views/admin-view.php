@@ -63,9 +63,12 @@
 			<label><input name="async_share_options[position]" type="radio" value="above" <?php if ( isset( $options['position'] ) ) {
 					checked( 'above', $options['position'] );
 				} ?> /> <?php _e( 'Before the content' ); ?> </label><br />
-			<input name="async_share_options[position]" type="radio" value="below" <?php if ( isset( $options['position'] ) ) {
+			<label>	<input name="async_share_options[position]" type="radio" value="below" <?php if ( isset( $options['position'] ) ) {
 				checked( 'below', $options['position'] );
-			} ?> /> <?php _e( 'After the content' ); ?> </label>
+			} ?> /> <?php _e( 'After the content' ); ?> </label> <br/>
+			<label>	<input name="async_share_options[position]" type="radio" value="nowhere" <?php if ( isset( $options['position'] ) ) {
+					checked( 'nowhere', $options['position'] );
+				} ?> /> <?php _e( 'Nowhere (Use async_social_display() in your theme to display the links.)' ); ?> </label>
 		</div>
 		<br />
 

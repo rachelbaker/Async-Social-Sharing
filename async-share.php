@@ -226,43 +226,47 @@ class Async_Social_Sharing {
 			return $content;
 		}
 
-		if ( is_page() ) {
-			if ( is_array( $options['types'] ) && in_array( 'page', $options['types'] ) ) {
-				if ( isset( $options['position'] ) && 'above' == $options['position'] ) {
-					return $above_content;
-				} else {
-					return $below_content;
+		//If set to "nowhere" option, don't try to output the links anywhere.
+		if(isset($options['position']) && $options['position'] !== 'nowhere')
+		{
+			if ( is_page() ) {
+				if ( is_array( $options['types'] ) && in_array( 'page', $options['types'] ) ) {
+					if ( isset( $options['position'] ) && 'above' == $options['position'] ) {
+						return $above_content;
+					} else {
+						return $below_content;
+					}
 				}
+
+				return $content;
 			}
 
-			return $content;
-		}
-
-		if ( is_home() || is_paged() ) {
-			if ( is_array( $options ) && isset( $options['paged'] ) ) {
-				if ( isset( $options['position'] ) && 'above' == $options['position'] ) {
-					return $above_content;
-				} else {
-					return $below_content;
+			if ( is_home() || is_paged() ) {
+				if ( is_array( $options ) && isset( $options['paged'] ) ) {
+					if ( isset( $options['position'] ) && 'above' == $options['position'] ) {
+						return $above_content;
+					} else {
+						return $below_content;
+					}
 				}
+
+				return $content;
 			}
 
-			return $content;
-		}
+			if ( is_single() ) {
 
-		if ( is_single() ) {
+				$cpt = get_post_type();
 
-			$cpt = get_post_type();
-
-			if ( is_array( $options['types'] ) && in_array( $cpt, $options['types'] ) ) {
-				if ( isset( $options['position'] ) && 'above' == $options['position'] ) {
-					return $above_content;
-				} else {
-					return $below_content;
+				if ( is_array( $options['types'] ) && in_array( $cpt, $options['types'] ) ) {
+					if ( isset( $options['position'] ) && 'above' == $options['position'] ) {
+						return $above_content;
+					} else {
+						return $below_content;
+					}
 				}
-			}
 
-			return $content;
+				return $content;
+			}
 		}
 
 		return $content;
@@ -278,7 +282,7 @@ class Async_Social_Sharing {
 function async_social() {
 	return Async_Social_Sharing::get_instance();
 }
-async_social();
+$async_social_plugin = async_social();
 
 /**
  * Outputs async social sharing for manual display.
